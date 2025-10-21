@@ -140,6 +140,24 @@ LinkedList.prototype.traverse = function(){
   return arr_data
 }
 
+LinkedList.prototype.reverseLinkedList = function(){
+  let current = this.head;
+  let prev = null;   
+  let next = null ;
+
+  while(current){
+    console.log('current in the value : ' , current.data);
+    next = current.next;   //shifting the next to the current.next
+    current.next = prev ;   // pointing the next of the current to the previous node
+    prev = current;
+    current = next;
+  }
+
+  this.head = prev;
+}
+
+
+
 
 
 let newLL = new LinkedList();
@@ -150,11 +168,13 @@ newLL.insertAtEnd(30)
 newLL.insertAtEnd(40)
 
 
-// console.log(newLL);
 
-// newLL.deleteByValue(40);
 // newLL.searchByValue(30)
 const arr = newLL.traverse()
-
 arr ? console.log(arr.join(' -> ')) : console.log(arr)
+
+newLL.reverseLinkedList()
+
+const arr1 = newLL.traverse()
+arr ? console.log(arr1.join(' -> ')) : console.log(arr1)
 
